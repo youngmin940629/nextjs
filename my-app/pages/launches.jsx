@@ -28,14 +28,27 @@ export default function Launches({data}) {
   </div>
 }
 
-
-export async function getServerSideProps(context) {
+// 빌드하는 순간에만 요청
+export async function getStaticProps(context) {
   const res = await fetch("https://api.spacexdata.com/v3/launches")
   const data = await res.json();
 
-  console.log("getServerSideProps");
-
+  console.log("getStaticProps");
+  
   return {
-    props: {data},
+    props: {data}, // will be passed to the page component as props
   }
 }
+
+
+// 요청할 때마다 실행
+// export async function getServerSideProps(context) {
+//   const res = await fetch("https://api.spacexdata.com/v3/launches")
+//   const data = await res.json();
+
+//   console.log("getServerSideProps");
+
+//   return {
+//     props: {data},
+//   }
+// }
