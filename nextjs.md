@@ -102,3 +102,15 @@ request 마다 동작하기 때문에 req.cookies 가능하다.
 - process.env.HOST_NAME
 - HOST=http://$HOST_NAME
 - NEXT_PUBLIC_ * 브라우저에 노출
+
+# Routing
+- pages file system
+- Link client side route(viewport 에 들어오면 SSG로 prefetching)
+- href={'/blog/${encodeURIComponent(post.slug)}'}
+- href={{pathname:'/blog/[slug]', query:{slug: post.slug},}}
+
+# Dynamic Routes
+- [pid] 로 다이나믹한 url을 생성할 수 있게한다.
+- router.query로 key와 value를 꺼낼 수 있다.
+- catch all routes with [...slug] 하면 query 의 key slug에 배열로 값들이 존재
+- optional catch all routes [[...slug]] slug 없는 경우도 대응 가능  
